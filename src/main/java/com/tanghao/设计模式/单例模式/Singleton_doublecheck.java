@@ -13,7 +13,11 @@ public class Singleton_doublecheck {
 
     private static volatile Singleton_doublecheck INSTANCE;
 
-    private Singleton_doublecheck() {}
+    private Singleton_doublecheck() {
+        if(INSTANCE != null){
+            throw new RuntimeException("无法通过反射破坏单例");
+        }
+    }
 
     public static Singleton_doublecheck getInstance(){
         if(INSTANCE == null){

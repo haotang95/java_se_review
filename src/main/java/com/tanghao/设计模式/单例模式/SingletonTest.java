@@ -12,13 +12,11 @@ public class SingletonTest {
 
     public static void main(String[] args) throws Exception {
 
-
-        //反射对单例模式的破坏
-        Singleton_static_inner instance = Singleton_static_inner.getInstance();
+        Singleton_lazy instance = Singleton_lazy.getInstance();
         System.out.println(instance);
 
-        Class<?> aClass = Class.forName("com.tanghao.设计模式.单例模式.Singleton_static_inner");
-
+        //反射对单例模式的破坏
+        Class<?> aClass = Class.forName("com.tanghao.设计模式.单例模式.Singleton_lazy");
         //getDeclaredConstructor返回所有修饰副包含的构造 getConstructor返回public的构造
         Constructor<?> constructor = aClass.getDeclaredConstructor();
         constructor.setAccessible(true);
@@ -36,7 +34,6 @@ public class SingletonTest {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("breakSingle.txt"));
         Object serializedObj = objectInputStream.readObject();
         System.out.println(serializedObj);
-
 
     }
 }
